@@ -18,12 +18,14 @@ public class CityJDBC implements CityDao {
         PreparedStatement ps = this.connection.prepareStatement(sql);
         ps.setInt(1,cityId);
         ResultSet result = ps.executeQuery();
-        result.next();
+        if(result.next()){
         City city = new City(
                 result.getInt("city_id"), result.getString("city_name"), result.getInt("country_id"
         ));
         result.close();
         return city;
+        }
+        return null;
     }
 
     @Override
@@ -36,8 +38,25 @@ public class CityJDBC implements CityDao {
     }
 
     @Override
-    public City updateCity(int city_id, String cityName, int countryId) throws SQLException {
-        return null;
+    public City updateCity(int cityId, String cityName, int countryId) throws SQLException {
+        String sql = "update city set city_name=?,country_id= ? where city_id= ?";
+        PreparedStatement ps = this.connection.prepareStatement(sql);
+        ps.setString(1,cityName);
+        ps.setInt(2,countryId);
+        ps.setInt(3,cityId);
+        ps.execute();
+        return getCity(cityId);
+    }
+
+    @Override
+    public City createCity(int cityId, String cityName, int countryId) throws SQLException {
+        String sql = "insert into city (city_id,city_name,country_id) values (?,?,?)";
+        PreparedStatement ps = this.connection.prepareStatement(sql);
+        ps.setInt(1,cityId);
+        ps.setString(2,cityName);
+        ps.setInt(3,countryId);
+        ps.execute();
+        return getCity(cityId);
     }
 
 }

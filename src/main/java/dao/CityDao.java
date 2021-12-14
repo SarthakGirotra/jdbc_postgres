@@ -10,5 +10,7 @@ public interface CityDao {
 
     Boolean deleteCity(int cityId) throws SQLException;
 
-    City updateCity(int city_id, String cityName, int countryId) throws  SQLException;
+    City updateCity(int cityId, String cityName, int countryId) throws  SQLException;
+
+    City createCity(int cityId, String cityName, int countryId) throws  SQLException;
 }

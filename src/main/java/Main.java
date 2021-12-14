@@ -10,8 +10,10 @@ public class Main {
         String user = "postgres";
         String password = "postgres";
         CityDao cityDao = new CityJDBC(url, user, password);
-        //City city = cityDao.getCity(10);
-        Boolean res = cityDao.deleteCity(4);
-        System.out.println(res);
+        //City city = cityDao.getCity(100);
+        //Boolean res = cityDao.deleteCity(99);
+        //City city = cityDao.updateCity(1,"new12",12);
+        //City city = cityDao.createCity(99,"new",23);
+        //System.out.println(city);
     }
 }

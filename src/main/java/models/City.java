@@ -37,10 +37,10 @@ public class City {
 
     @Override
     public String toString() {
-        return "City{" +
-                "cityId=" + cityId +
-                ", cityName='" + cityName + '\'' +
-                ", countryId=" + countryId +
-                '}';
+        return "City { " +
+                "cityId= " + cityId +
+                ", cityName= '" + cityName + '\'' +
+                ", countryId= " + countryId +
+                " }";
     }
 }
